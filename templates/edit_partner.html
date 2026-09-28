@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Редактировать партнёра</h2>
+    
+    <form method="post" class="partner-form">
+        <div class="form-group">
+            <label for="name">Наименование:</label>
+            <input type="text" name="name" id="name" value="{{ partner.name }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="partner_type">Тип:</label>
+            <input type="text" name="partner_type" id="partner_type" value="{{ partner.partner_type }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="rating">Рейтинг:</label>
+            <input type="number" name="rating" id="rating" value="{{ partner.rating }}" min="0" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="address">Адрес:</label>
+            <input type="text" name="address" id="address" value="{{ partner.address }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="director_name">Директор:</label>
+            <input type="text" name="director_name" id="director_name" value="{{ partner.director_name }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Телефон:</label>
+            <input type="tel" name="phone" id="phone" value="{{ partner.phone }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" value="{{ partner.email }}" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="sales_volume">Объём продаж (ед.):</label>
+            <input type="number" name="sales_volume" id="sales_volume" value="{{ partner.sales_volume }}" min="0" required>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn submit-btn">Сохранить</button>
+            <a href="{{ url_for('index') }}" class="btn cancel-btn">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Добавить партнёра</h2>
+    
+    <form method="post" class="partner-form">
+        <div class="form-group">
+            <label for="name">Наименование:</label>
+            <input type="text" name="name" id="name" placeholder="Наименование партнёра" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="partner_type">Тип:</label>
+            <input type="text" name="partner_type" id="partner_type" placeholder="Тип партнёра" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="rating">Рейтинг:</label>
+            <input type="number" name="rating" id="rating" placeholder="Рейтинг" min="0" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="address">Адрес:</label>
+            <input type="text" name="address" id="address" placeholder="Адрес" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="director_name">Директор:</label>
+            <input type="text" name="director_name" id="director_name" placeholder="ФИО директора" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Телефон:</label>
+            <input type="tel" name="phone" id="phone" placeholder="Телефон" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="sales_volume">Объём продаж (ед.):</label>
+            <input type="number" name="sales_volume" id="sales_volume" placeholder="Объём продаж" min="0" required>
+        </div>
+        
+        <div class="form-actions">
+            <button type="submit" class="btn submit-btn">Добавить</button>
+            <a href="{{ url_for('index') }}" class="btn cancel-btn">Отмена</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

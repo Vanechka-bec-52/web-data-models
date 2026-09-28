@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Список партнёров{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="partners-container">
+    <!-- Карточка добавления нового партнера -->
+    <div class="card add-card">
+        <a href="{{ url_for('add_partner') }}">
+            <div class="add-icon">+</div>
+        </a>
+    </div>
+    
+    <!-- Карточки партнеров -->
+    {% for partner in partners %} 
+    <div class="card partner-card">
+        <h3>{{ partner.name }}</h3>
+        <div class="partner-info">
+            <p><strong>Тип:</strong> {{ partner.partner_type }}</p>
+            <p><strong>Рейтинг:</strong> {{ partner.rating }}</p>
+            <p><strong>Адрес:</strong> {{ partner.address }}</p>
+            <p><strong>Директор:</strong> {{ partner.director_name }}</p>
+            <p><strong>Телефон:</strong> {{ partner.phone }}</p>
+            <p><strong>Email:</strong> {{ partner.email }}</p>
+            <p><strong>Объём продаж:</strong> {{ "{:,}".format(partner.sales_volume).replace(",", " ") }} ед.</p>
+        </div>
+        
+        <div class="discount-info">
+            <p><strong>Скидка:</strong> {{ partner.discount }}%</p>
+        </div>
+        <div class="actions">
+            <a href="{{ url_for('edit_partner', partner_id=partner.id) }}" class="btn edit-btn">Редактировать</a>
+            <a href="{{ url_for('delete_partner', partner_id=partner.id) }}" 
+               onclick="return confirm('Удалить партнера?')" class="btn delete-btn">Удалить</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
